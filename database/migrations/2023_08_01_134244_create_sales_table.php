@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sale_id')->constrained();
+            $table->foreignId('seller_id')->constrained();
             $table->foreignId('client_id')->constrained();
-            $table->timestamps('sold_at');
+            $table->timestamp('sold_at');
             $table->char('status', 1);
             $table->integer('total_amount');
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales');
+        DB::statement("DROP MATERIALIZED VIEW sales_commission_view");
     }
 };
