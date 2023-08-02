@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -26,8 +25,8 @@ return new class extends Migration
                 s.sold_at,
                 s.status,
                 s.total_amount,
-                round(s.total_amount * cp.commission_rate / 100 ) as commission'
-            )->toSql();
+                round(s.total_amount * cp.commission_rate / 100) as commission
+            ')->toSql();
 
         DB::statement("CREATE MATERIALIZED VIEW sales_commission_view AS $query");
     }
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales_commission_view');
+        DB::statement('DROP MATERIALIZED VIEW sales_commission_view');
     }
 };

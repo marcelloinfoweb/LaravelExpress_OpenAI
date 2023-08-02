@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("DROP MATERIALIZED VIEW sales_commission_view");
+        Schema::dropIfExists('sales');
     }
 };
