@@ -16,7 +16,7 @@
                     </a>
                 </div>
             </div>
-            <div class="max-w-max overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+            <div class="max-w-2xl overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                 <table class="divide-y divide-gray-300">
                     <thead class="bg-gray-50">
                     <tr>
