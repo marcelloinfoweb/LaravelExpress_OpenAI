@@ -11,7 +11,7 @@
     </style>
 @endpush
 
-<div>
+<div x-data="dashboard">
     <div class="flex flex-col min-h-[calc(100vh-100px)] justify-between mx-auto max-w-7xl px-6 lg:px-8">
         <x-heading title="dashboard" description="Custom dashboard"></x-heading>
         <div class="flex flex-1 w-full py-4 overflow-x-auto" x-ref="vegalitecontainer">
