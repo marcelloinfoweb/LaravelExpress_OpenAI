@@ -21,9 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', \App\Http\Livewire\Dashboard::class)->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,22 +30,6 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/clients', ClientController::class);
     Route::resource('/sales', SaleController::class);
-
-    Route::get('/chart', function () {
-        $fields = implode(',', \App\Models\SalesCommission::getColumns());
-        $question = 'Gere um gráfico das vendas por empresa no eixo y ao longo dos últimos 5 anos';
-
-        $prompt = "Considerando a lista de campos ($fields), e gere uma configuração json do vega-lite v5 ";
-        $prompt .= "(sem campo de dados e com descrição) que atenda ao seguinte pedido: $question";
-
-        $config = OpenAI::completions()->create([
-            'model' => 'text-davinci-003',
-            'prompt' => $prompt,
-            'max_tokens' => 1500
-        ])->choices[0]->text;
-
-        dd($config);
-    });
 });
 
 require __DIR__ . '/auth.php';
