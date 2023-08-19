@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 <body class="min-h-screen">
 <div x-data="{menuVisibility: false}">
@@ -27,5 +28,6 @@
         </main>
     </div>
 </div>
+@livewireScripts
 </body>
 </html>
